@@ -90,6 +90,12 @@ public abstract class AbstractGoCodegen extends DefaultCodegen implements Codege
     }
 
     @Override
+    public CodegenProperty fromProperty(String name, Property p) {
+        return fromProperty(name, p, null);
+    }
+
+
+    @Override
     protected CodegenProperty fromProperty(String name, Property p, Integer itemsDepth) {
         String newName;
         if (p.getVendorExtensions().containsKey("x-go-name"))
