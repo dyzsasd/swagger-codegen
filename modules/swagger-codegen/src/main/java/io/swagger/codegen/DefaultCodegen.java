@@ -81,7 +81,7 @@ public class DefaultCodegen {
     protected String modelNamePrefix = "", modelNameSuffix = "";
     protected String testPackage = "";
     protected Map<String, String> apiTemplateFiles = new HashMap<String, String>();
-    protected Map<String, String> modelTemplateFiles = new HashMap<String, String>();
+    protected Map<String, String> modelTemplateFiles = new HashMap <String, String>();
     protected Map<String, String> apiTestTemplateFiles = new HashMap<String, String>();
     protected Map<String, String> modelTestTemplateFiles = new HashMap<String, String>();
     protected Map<String, String> apiDocTemplateFiles = new HashMap<String, String>();
@@ -1617,7 +1617,7 @@ public class DefaultCodegen {
      * @param itemsDepth the depth in nested containers or null
      * @return Codegen Property object
      */
-    private CodegenProperty fromProperty(String name, Property p, Integer itemsDepth) {
+    protected CodegenProperty fromProperty(String name, Property p, Integer itemsDepth) {
         if (p == null) {
             LOGGER.error("unexpected missing property for name " + name);
             return null;

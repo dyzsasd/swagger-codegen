@@ -89,12 +89,23 @@ public abstract class AbstractGoCodegen extends DefaultCodegen implements Codege
                 .defaultValue(Boolean.TRUE.toString()));
     }
 
-    /**
-     * Escapes a reserved word as defined in the `reservedWords` array. Handle escaping
-     * those terms here.  This logic is only called if a variable matches the reserved words
-     *
-     * @return the escaped term
-     */
+    @Override
+    protected CodegenProperty fromProperty(String name, Property p, Integer itemsDepth) {
+        String newName;
+        if (p.getVendorExtensions().containsKey("x-go-name"))
+            newName = p.getVendorExtensions().get("x-go-name").toString();
+        else
+            newName = name;
+        return super.fromProperty(newName, p, itemsDepth);
+    }
+
+
+        /**
+         * Escapes a reserved word as defined in the `reservedWords` array. Handle escaping
+         * those terms here.  This logic is only called if a variable matches the reserved words
+         *
+         * @return the escaped term
+         */
     @Override
     public String escapeReservedWord(String name) {
         // Can't start with an underscore, as our fields need to start with an
